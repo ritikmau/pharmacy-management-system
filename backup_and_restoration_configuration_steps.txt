@@ -1,0 +1,294 @@
+Microsoft Windows [Version 10.0.19045.5608]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\VIVEK>wsl
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ nano /mnt/c/backups/backup.sh
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ chmod +x /mnt/c/backups/backup.sh
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ bash /mnt/c/backups/backup.sh
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+✅ Backup successful: /mnt/c/backups/pharmacy_backup_2025-03-23_01-51-17.sql
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ nano /mnt/c/backups/restore.sh
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ chmod +x /mnt/c/backups/restore.sh
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ bash /mnt/c/backups/restore.sh
+♻️ Restoring database from: /mnt/c/backups/pharmacy_backup_2025-03-23_01-51-17.sql
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+✅ Database restoration successful!
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ mysql -u root -pkali@123
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.41-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE USER 'pharmacist'@'localhost' IDENTIFIED BY 'pharma123';
+RANT SELECT, INSERT, UPDATE ON pharmacy_db.* TO 'pharmacistERROR 1396 (HY000): Operation CREATE USER failed for 'pharmacist'@'localhost'
+'@'locamysql> GRANT SELECT, INSERT, UPDATE ON pharmacy_db.* TO 'pharmacist'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DROP USER 'pharmacist'@'localhost';
+EATE USER 'pharmacist'@'localhost' IDENTIFIED BY 'pharma123';
+GRANT SELECT, INSERT, UPDATE ON pharmacy_db.* TO 'pharmacist'@'localhoQuery OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE USER 'pharmacist'@'localhost' IDENTIFIED BY 'pharma123';
+USH PRIVILEGES;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> GRANT SELECT, INSERT, UPDATE ON pharmacy_db.* TO 'pharmacist'@'localhost';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE USER 'pharmacist'@'localhost' IDENTIFIED BY 'pharma123';
+ERROR 1396 (HY000): Operation CREATE USER failed for 'pharmacist'@'localhost'
+mysql> CREATE USER 'pharmacist'@'localhost' IDENTIFIED BY 'pharma123';
+RANT SELECT, INSERT, UPDATE ON pharmacy_db.* TO 'pharmacist'@'localhost';ERROR 1396 (HY000): Operation CREATE USER failed for 'pharmacist'@'localhost'
+mysql> GRANT SELECT, INSERT, UPDATE ON pharmacy_db.* TO 'pharmacist'@'localhost';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT User, Host FROM mysql.user WHERE User = 'pharmacist';
++------------+-----------+
+| User       | Host      |
++------------+-----------+
+| pharmacist | %         |
+| pharmacist | localhost |
++------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> DROP USER 'pharmacist'@'localhost';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT User, Host FROM mysql.user WHERE User = 'pharmacist';
++------------+------+
+| User       | Host |
++------------+------+
+| pharmacist | %    |
++------------+------+
+1 row in set (0.00 sec)
+
+mysql> DROP USER 'pharmacist'@'%';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT User, Host FROM mysql.user WHERE User = 'pharmacist';
+Empty set (0.00 sec)
+
+mysql> CREATE USER 'pharmacist'@'localhost' IDENTIFIED BY 'pharma123';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> GRANT SELECT, INSERT, UPDATE ON pharmacy_db.* TO 'pharmacist'@'localhost';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE USER 'customer'@'localhost' IDENTIFIED BY 'cust123';
+ERROR 1396 (HY000): Operation CREATE USER failed for 'customer'@'localhost'
+mysql> SELECT User, Host FROM mysql.user WHERE User = 'customer';
++----------+-----------+
+| User     | Host      |
++----------+-----------+
+| customer | localhost |
++----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> DROP USER 'customer'@'localhost';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE USER 'customer'@'localhost' IDENTIFIED BY 'cust123';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> GRANT SELECT ON pharmacy_db.medicines TO 'customer'@'localhost';
+ERROR 1146 (42S02): Table 'pharmacy_db.medicines' doesn't exist
+mysql> use database pharmacy_db
+ERROR 1049 (42000): Unknown database 'database'
+mysql> use pharmacy_db
+Database changed
+mysql> GRANT SELECT ON pharmacy_db.medicines TO 'customer'@'localhost';
+ERROR 1146 (42S02): Table 'pharmacy_db.medicines' doesn't exist
+mysql> GRANT SELECT ON pharmacy_db.medicine TO 'customer'@'localhost';
+ERROR 1146 (42S02): Table 'pharmacy_db.medicine' doesn't exist
+mysql> USE pharmacy_db;
+OW TDatabase changed
+mysql> SHOW TABLES;
+Empty set (0.00 sec)
+
+mysql> SHOW TABLES;
+Empty set (0.00 sec)
+
+mysql> USE pharmacy_db;
+Database changed
+mysql> SHOW TABLES;
+Empty set (0.00 sec)
+
+mysql> mysql -u root -p < C:\Users\VIVEK\OneDrive\Desktop\medix
+ERROR:
+Unknown command '\U'.
+ERROR:
+Unknown command '\V'.
+ERROR:
+Unknown command '\O'.
+ERROR:
+Unknown command '\D'.
+ERROR:
+Unknown command '\m'.
+    ->
+    ->
+    -> ^C
+mysql> mysql -u root -p < mysql -u root -p < "C:\Users\VIVEK\OneDrive\Desktop\medix"
+    -> ^C
+mysql> mysql -u root -p < mysql -u root -p < 'C:\Users\VIVEK\OneDrive\Desktop\medix'
+    ->
+    -> ^C
+mysql> exit
+Bye
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ mysql -u root -p < /mnt/c/Users/VIVEK/OneDrive/Desktop/medix/schema.sql
+Enter password:
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ mysql -u root -pkali@123
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.41-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE pharmacy_db;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHOW TABLES;
++-----------------------+
+| Tables_in_pharmacy_db |
++-----------------------+
+| categories            |
+| medicines             |
+| order_items           |
+| orders                |
+| payments              |
+| suppliers             |
+| users                 |
++-----------------------+
+7 rows in set (0.00 sec)
+mysql> USE pharmacy_db;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> DROP USER 'pharmacist'@'localhost';
+ERROR 1396 (HY000): Operation DROP USER failed for 'pharmacist'@'localhost'
+mysql> DROP USER 'pharmacist';
+ERROR 1396 (HY000): Operation DROP USER failed for 'pharmacist'@'%'
+mysql> select user, host from mysql.user
+    -> ;
++------------------+-----------+
+| user             | host      |
++------------------+-----------+
+| backup_admin     | %         |
+| pharmacy_staff   | %         |
+| amit_pharmacist  | localhost |
+| backup_admin     | localhost |
+| customer         | localhost |
+| debian-sys-maint | localhost |
+| mysql.infoschema | localhost |
+| mysql.session    | localhost |
+| mysql.sys        | localhost |
+| pharmacy_staff   | localhost |
+| ritik_backup     | localhost |
+| root             | localhost |
+| vivek_staff      | localhost |
++------------------+-----------+
+13 rows in set (0.00 sec)
+
+mysql> CREATE USER 'pharmacist'@'localhost' IDENTIFIED BY 'pharma123';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> GRANT SELECT, INSERT, UPDATE ON pharmacy_db.* TO 'pharmacist'@'localhost';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE USER 'customer'@'localhost' IDENTIFIED BY 'cust123';
+ERROR 1396 (HY000): Operation CREATE USER failed for 'customer'@'localhost'
+mysql> DROP USER 'customer';
+ERROR 1396 (HY000): Operation DROP USER failed for 'customer'@'%'
+mysql> DROP USER 'customer'@'localhost';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE USER 'customer'@'localhost' IDENTIFIED BY 'cust123';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> GRANT SELECT ON pharmacy_db.medicines TO 'customer'@'localhost';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> exit
+Bye
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ mysql -u pharmacist -ppharma123
+mysql -u customer -pcust123
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.41-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> mysql -u customer -pcust123
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysql -u customer -pcust123' at line 1
+mysql> exit
+Bye
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ mysql -u pharmacist -ppharma123
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 8.0.41-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> exit
+Bye
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ mysql -u customer -pcust123
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 17
+Server version: 8.0.41-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> exit
+Bye
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ crontab -e
+crontab: installing new crontab
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$

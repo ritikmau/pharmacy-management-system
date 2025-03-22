@@ -1,0 +1,21 @@
+Microsoft Windows [Version 10.0.19045.5608]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\VIVEK>wsl
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ time bash /mnt/c/backups/backup.sh
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+✅ Backup successful: /mnt/c/backups/pharmacy_backup_2025-03-23_02-31-38.sql
+
+real    0m0.112s
+user    0m0.022s
+sys     0m0.004s
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$ time bash /mnt/c/backups/restore.sh
+♻️ Restoring database from: /mnt/c/backups/pharmacy_backup_2025-03-23_02-31-38.sql
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [Warning] Using a password on the command line interface can be insecure.
+✅ Database restoration successful!
+
+real    0m0.783s
+user    0m0.027s
+sys     0m0.014s
+ritik@DESKTOP-AAN33KM:/mnt/c/Users/VIVEK$
